@@ -3,10 +3,10 @@ const moment = require("moment-timezone");
 
 module.exports = {
   config: {
-    name: "notification",
-    aliases: ["notify", "noti"],
+    name: "notification2",
+    aliases: ["notify2", "noti2"],
     version: "1.6",
-    author: "T A N J I L",
+    author: "T A N J I L 🎀",
     countDown: 5,
     role: 2,
     shortDescription: {
@@ -52,10 +52,9 @@ module.exports = {
 
     const formSend = {
       body:
-`🎀  ᯽𝐍𝐎𝐓𝐈 𝐅𝐈𝐂𝐈 𝐓𝐈𝐎𝐍᯽ 🎀
+`🎀  ᯽    নো'টি'শ   ᯽ 🎀
 
 👤 From: ${senderName}
-🕒 Time: ${timeString} - ${dateString}
 
 --------------------------------------------
 ${args.join(" ")}`,
