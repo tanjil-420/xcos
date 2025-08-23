@@ -226,7 +226,7 @@ module.exports = {
 }
 
         case "topreset": {
-          const adminUID = "61577095705293";
+          const adminUID = "61579222525905";
           if (event.senderID !== adminUID)
             return message.reply(`${prefix}❌ You are not authorized to use this command.`);
 
