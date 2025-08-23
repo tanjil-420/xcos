@@ -11,7 +11,7 @@ module.exports = {
   },
 
   onStart: async function ({ api, event, usersData, message }) {
-    const imgURL = "https://files.catbox.moe/s6ju49.jpg";
+    const imgURL = "https://imgur.com/a/s8ZBuSD";
     const attachment = await global.utils.getStreamFromURL(imgURL);
 
     const id = event.senderID;
@@ -31,25 +31,26 @@ module.exports = {
       location: "𝐃𝐡𝐚𝐤𝐚",
     };
 
-    const body = `
-┏━━━━━━━━━━━┓
-┃ 𝗢𝗪𝗡𝗘𝗥 𝗜𝗡𝗙𝗢 ┃
-┗━━━━━━━━━━━┛
+    const body = `⎯ [(🌷) OWNER INFO (🌷)] ⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
-👤 𝗛𝗲𝗹𝗹𝗼: ${name}
-🤖 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲: ${info.botName}
-📎 𝗣𝗿𝗲𝗳𝗶𝘅: ${info.prefix}
+Name   : TanJil Hasan 🎀
+UID    : 61579509758592
+U.n.   : picchi143
 
-👑 𝗢𝘄𝗻𝗲𝗿: ${info.ownerName}
-🚹 𝗚𝗲𝗻𝗱𝗲𝗿: ${info.gender}
-📱 𝗡𝘂𝗺𝗯𝗲𝗿: ${info.number}
-🎂 𝗔𝗴𝗲: ${info.age}
+Age    : 𝟷𝟿+
+study  : honours
+Status : Single
 
-❤️ 𝗥𝗲𝗹𝗮𝘁𝗶𝗼𝗻: ${info.relationship}
-🏫 𝗦𝘁𝘂𝗱𝘆: ${info.study}
-📍 𝗟𝗼𝗰𝗮𝘁𝗶𝗼𝗻: ${info.location}
+number : 𝟎𝟏𝟕𝟒𝟗𝟑𝟏𝟓𝟏𝟓𝟕
+House  : Bangladesh,Dhaka
+Relign : Islam
 
-━━━━━━━━━━━━━━━`;
+
+⎯⎯⎯⎯ [ 🔧 BOT ] ⎯⎯⎯⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+👑 Author : 🎀 𝚃 𝙰 𝙽 𝙹 𝙸 𝙻 🎀`;
 
     message.reply({
       body,
