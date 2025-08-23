@@ -1,77 +1,67 @@
-const moment = require('moment-timezone');
-const axios = require('axios');
+const fs = require("fs-extra");
+const os = require("os");
 
 module.exports = {
   config: {
     name: "info",
-    aliases: ["inf", "in4"],
-    version: "2.0",
-    author: " Eren",
-    countDown: 5,
-    role: 0,
-    shortDescription: {
-      en: "Sends information about the bot and admin along with a video."
-    },
-    longDescription: {
-      en: "Sends information about the bot and admin along with a video."
-    },
-    category: "Information",
+    version: "4.0",
+    author: "T A N J I L 🎀",
+    shortDescription: "Show Owner and Bot Info in styled reply",
+    longDescription: "Beautifully formatted information command showing Owner and Bot details",
+    category: "INFO",
     guide: {
-      en: "{pn}"
-    }
+      en: "[user]",
+    },
   },
 
-  onStart: async function ({ message }) {
-    this.sendInfo(message);
+  onStart: async function ({ api, event }) {
+    const { threadID, senderID } = event;
+
+    const uptimeSeconds = process.uptime();
+    const uptime = formatUptime(uptimeSeconds);
+    const system = os.platform();
+    const cpu = os.cpus()[0].model;
+    const updateMonth = "August 2025";
+
+    const message = `
+⎯ [(🌷) OWNER INFO (🌷)] ⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+Name   : TanJil Hasan 🎀
+UID    : ${senderID}
+U.n.   : tanjilhasan420
+Age    : 𝟷𝟿+
+House  : Dhaka
+Status : Single
+
+⎯⎯ [ 🤖 BOT INFO 🤖 ] ⎯⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+Name   : Hi Na Ta 
+UID    : 61579021162546
+U.n.   : 𝙴𝚁𝚁𝙾𝚁
+Age    : 1+
+House  : Indonesia
+Status : A.I. System
+Uptime : ${uptime}
+Update : ${updateMonth}
+System : ${system}
+CRU    : ${cpu}
+
+⎯⎯⎯⎯ [ 🔧 BOT ] ⎯⎯⎯⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+👑 Author : 🎀 𝚃 𝙰 𝙽 𝙹 𝙸 𝙻 🎀
+    `;
+
+    api.sendMessage(message, threadID);
   },
-
-  onChat: async function ({ event, message }) {
-    if (event.body && event.body.toLowerCase() === "info") {
-      this.sendInfo(message);
-    }
-  },
-
-  sendInfo: async function (message) {
-    const botName = "🕸️ 𝐒𝐩𝐢𝐝𝐞𝐘🕷️";
-    const authorName = "Ma-Hi";
-    const authorFB = "fb.com/mahi68x";
-    const authorInsta = "raadx102";
-    const status = "𝗦𝗶𝗻𝗴𝗹𝗲";
-
-    const now = moment().tz('Asia/Dhaka');
-    const time = now.format('h:mm:ss A');
-
-    const uptime = process.uptime();
-    const seconds = Math.floor(uptime % 60);
-    const minutes = Math.floor((uptime / 60) % 60);
-    const hours = Math.floor((uptime / (60 * 60)) % 24);
-    const uptimeString = `${hours}h ${minutes}m ${seconds}s`;
-
-    const videoUrl = "https://files.catbox.moe/t73j7v.mp4"; /*dont use imgur url for this cmd*/
-
-    const body = `
-
-┏━━━━━━━━━━━━━━━━┓
-┃ 🧑 Admin Info
-┃ ╰➤ Name: ${authorName}
-┃ ╰➤ Facebook: ${authorFB}
-┃ ╰➤ Instagram: ${authorInsta}
-┃ ╰➤ Status: ${status}
-┃
-┃ 🤖 Bot Details
-┃ ╰➤ Name: ${botName}
-┃ ╰➤ Time: ${time}
-┃ ╰➤ Uptime: ${uptimeString}
-┗━━━━━━━━━━━━━━━━┛
-
-I may not be perfect,
-   but I’ll always reply to you.`;
-
-    const response = await axios.get(videoUrl, { responseType: 'stream' });
-
-    message.reply({
-      body,
-      attachment: response.data
-    });
-  }
 };
+
+function formatUptime(seconds) {
+  const d = Math.floor(seconds / (3600 * 24));
+  const h = Math.floor((seconds % (3600 * 24)) / 3600);
+  const m = Math.floor((seconds % 3600) / 60);
+  const s = Math.floor(seconds % 60);
+  return `${d}d ${h}h ${m}m ${s}s`;
+}

@@ -2,12 +2,12 @@ module.exports = {
   config: {
     name: "inbox",
     aliases: ["in"],
-    version: "1.0",
-    author: "Lafie Ayan",
+    version: "2.0",
+    author: "B4YJ1D",
     countDown: 10,
     role: 0,
     shortDescription: {
-      en: "hello goatbot inbox no prefix file enjoy the cmmand @ArYan"
+      en: "okh enjoy @b4yj1d cmd"
     },
     longDescription: {
       en: ""
@@ -28,8 +28,8 @@ module.exports = {
   onStart: async function({ api, event, args, message }) {
     try {
       const query = encodeURIComponent(args.join(' '));
-      message.reply("𝐁𝐨𝐤𝐚𝐜𝐡𝐨𝐝𝐚 𝐃𝐞𝐤𝐡 𝐒𝐦𝐬 𝐃𝐢𝐬𝐢 ✅\n\n  𝐄𝐡𝐨𝐧 𝐤𝐢 𝐈𝐧𝐛𝐨𝐱 𝐂𝐡𝐞𝐤 𝐃𝐞𝐰𝐚𝐫 𝐤𝐨𝐭𝐡𝐚𝐨 𝐁𝐨𝐥𝐚 𝐋𝐚𝐠𝐛𝐞? 🙄", event.threadID);
-      api.sendMessage("𝐊𝐢𝐫𝐞 𝐁𝐨𝐤𝐚𝐜𝐡𝐨𝐝𝐚\n😒", event.senderID);
+      message.reply("𝐁𝐚𝐛𝐲 𝐀𝐦𝐢 𝐭𝐨𝐦𝐚𝐫 𝐢𝐧𝐛𝐨𝐱 𝐞 𝐬𝐦𝐬 𝐝𝐢𝐬𝐢 😺", event.threadID);
+      api.sendMessage("✅ 𝐗𝐚𝐍 𝐓𝐮𝐦𝐢 𝐠𝐫𝐨𝐮𝐩 𝐞 𝐤𝐢 𝐤𝐨𝐫𝐨 𝐀𝐦𝐢 𝐭𝐨 𝐢𝐧𝐛𝐨𝐱 𝐭𝐨𝐦𝐚𝐫 𝐉𝐨𝐧𝐧𝐨 𝐁𝐨𝐬𝐞 𝐚𝐬𝐢 😄🙈", event.senderID);
     } catch (error) {
       console.error("Error bro: " + error);
     }
