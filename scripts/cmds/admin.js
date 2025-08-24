@@ -128,23 +128,31 @@ case "-l": {
 		)
 	);
 
-	const ownerInfo = getNames[0]; // প্রথম UID-ই হবে OWNER
-	const operatorList = getNames.slice(1); // বাকি সবাই OPERATOR
+	const ownerInfo = getNames[0];
+	const operatorList = getNames.slice(1);
 
-	const owner = `
-᳃            𝐎 𝐖 𝐍 𝐄 𝐑           ᳃
+	const owner = `⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+⎯ [(🌷)   OWNER    (🌷)] ⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
-🎀 ${ownerInfo.name} 🎀
-
-Uid: ${ownerInfo.uid}
-
---------------------------------------------\n`;
+Name : ${ownerInfo.name}
+uid : ${ownerInfo.uid}\n`;
 
 	const operators = operatorList
 		.map(({ uid, name }) => `• ${name} (${uid})`)
 		.join("\n");
 
-	return message.reply(owner + (operators ? `\n          -----   Operator -----\n\n${operators}` : "\nNull..\nNull..\nNull.."));
+	return message.reply(owner + (operators ? `\n⎯⎯ [ 🤖 operator 🤖 ] ⎯⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+• null ()
+• null ()
+• null ()
+${operators}
+
+
+⎯⎯⎯⎯ [ 🔧 BOT ] ⎯⎯⎯⎯
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯` : ""));
 }
 default:
 	return message.SyntaxError();  
