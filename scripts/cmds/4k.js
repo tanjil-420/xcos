@@ -1,49 +1,34 @@
-const axios = require("axios");
+const apiUrl = "https://www.noobs-apis.run.place";
 
 module.exports = {
   config: {
-    name: "4k",
-    aliases: ["upscale"],
-    version: "1.1",
-    role: 0,
-    author: "ArYAN",
-    countDown: 5,
-    longDescription: "Upscale images to 4K resolution.",
-    category: "image",
-    guide: {
-      en: "${pn} reply to an image to upscale it to 4K resolution."
-    }
+  name: "upscale",
+  aliases: ["4k", "ups"],
+  version: "1.6.9",
+  author: "Nazrul",
+  role: 0,
+  description: "Upscale image by URL or reply",
+  category: "image",
+  countDown: 9,
+  guide: { en: "{pn} [url] or reply to image" }
   },
 
-  onStart: async function ({ message, event }) {
-    if (
-      !event.messageReply ||
-      !event.messageReply.attachments ||
-      !event.messageReply.attachments[0] ||
-      event.messageReply.attachments[0].type !== "photo"
-    ) {
-      return message.reply("📸 𝙿𝚕𝚎𝚊𝚜𝚎 𝚛𝚎𝚙𝚕𝚢 𝚝𝚘 𝚊𝚗 𝚒𝚖𝚊𝚐𝚎 𝚝𝚘 𝚞𝚙𝚜𝚌𝚊𝚕𝚎 𝚒𝚝");
+  onStart: async ({ message, event, args }) => {
+ const s = Date.now();
+let imgUrl; if (event.messageReply?.attachments?.[0]?.type === "photo") { imgUrl = event.messageReply.attachments[0].url } else if (args[0]) { imgUrl = args.join(" ")}
+
+  if (!imgUrl) {
+      return message.reply("• Reply to image or provide imgUrl!");
     }
-
-    const imgurl = encodeURIComponent(event.messageReply.attachments[0].url);
-    const upscaleUrl = `https://aryan-xyz-upscale-api-phi.vercel.app/api/upscale-image?imageUrl=${imgurl}&apikey=ArYANAHMEDRUDRO`;
-
-    message.reply("⚠️ Wait a moment. Your picture is 4k", async (err, info) => {
-      try {
-        const response = await axios.get(upscaleUrl);
-        const imageUrl = response.data.resultImageUrl;
-        const attachment = await global.utils.getStreamFromURL(imageUrl, "upscaled.png");
-
-        message.reply({
-          body: "✅ Create your photo ☘️",
-          attachment
-        });
-
-        message.unsend(info.messageID);
-      } catch (error) {
-        console.error("Upscale Error:", error.message);
-        message.reply("❌ 𝙴𝚛𝚛𝚘𝚛 𝚘𝚌𝚌𝚞𝚛𝚛𝚎𝚍 𝚝𝚑𝚎 𝚒𝚖𝚊𝚐𝚎.");
-      }
-    });
+  message.reaction('🦆', event.messageID);
+    try {
+      const res = await require('axios').get(`${apiUrl}/nazrul/upscale?imgUrl=${encodeURIComponent(imgUrl)}`, { responseType: "stream" });
+  message.reaction('✅', event.messageID);
+  const t = ((Date.now() - s) / 1000).toFixed(2);
+  message.reply({ body: `✅ Here's your Upscaled Image!\n⌛ Process time : ${t} `, attachment: res.data });
+    } catch (error) {
+      message.reaction('❌', event.messageID);
+      message.reply(`error: ${error.message}`);
+    }
   }
 };
