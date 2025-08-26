@@ -19,6 +19,7 @@
     "enable": false,
     "ignoreCommand": []
   },
+  "DEV": ["61579509758592"],
   "adminBot": [
     "61579509758592"
   ],
