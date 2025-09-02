@@ -1,5 +1,3 @@
-const apiUrl = "https://r24qks-3001.csb.app";
-
 module.exports = {
   config: {
     name: "edit",
@@ -16,7 +14,6 @@ module.exports = {
   },
 
   onStart: async ({ message, event, args }) => {
-    const axios = require("axios");
     let imgUrl, prompt = "";
 
     if (event.messageReply?.attachments?.[0]?.type === "photo") {
@@ -37,7 +34,8 @@ module.exports = {
     const wm = await message.reply("⏳ Editing your image... Please wait!");
 
     try {
-      const res = await axios.get(
+      const apiUrl = (await require('axios').get("https://raw.githubusercontent.com/nazrul4x/Noobs/main/Apis.json")).data.cdi;
+      const res = await require('axios').get(
         `${apiUrl}/nazrul/edit?imgUrl=${encodeURIComponent(imgUrl)}&prompt=${encodeURIComponent(prompt)}&key=Nazrul4x`,
         { responseType: "stream" }
       );
@@ -57,7 +55,7 @@ module.exports = {
         for await (const chunk of res.data) text += chunk;
 
         const json = JSON.parse(text);
-        return message.reply(json?.result?.text || "• No text found in result.");
+        return message.reply(json?.result?.text || "• Not found any result!");
       }
 
     } catch (error) {
