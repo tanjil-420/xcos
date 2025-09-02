@@ -15,7 +15,7 @@ module.exports = {
       longDescription: {
         en: "Remove background in your photo"
       },
-      category: "img",
+      category: "image",
       guide: {
         en: "{p}{n} [reply to an img]"
       }
