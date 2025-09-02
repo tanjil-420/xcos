@@ -1,6 +1,6 @@
 module.exports.config = {
     name: "son",
-    category: "automation",
+    category: "media",
     author: "Romim×BaYjid",
     role: 2,
     shortDescription: "মেনশন করা ইউজারকে গালি দেয় / বন্ধ করে",
