@@ -11,7 +11,7 @@ module.exports = {
 		longDescription: {
 			en: "Anti unsend mode. works with audio video and images"
 		},
-		category: "Admins",
+		category: "Admin",
 		guide: {
 			en :"{pn} on or off\nex: {pn} on"
 		},
