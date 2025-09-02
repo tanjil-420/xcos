@@ -14,7 +14,7 @@ module.exports = {
     description: "gemeini ai",
     countDown: 5,
     role: 0,
-    category: "google",
+    category: "ai",
     guide: {
       en: "{pn} message | photo reply",
     },
