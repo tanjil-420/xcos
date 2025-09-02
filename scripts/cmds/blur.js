@@ -8,7 +8,7 @@ module.exports = {
         description: {
             en: "𝗕𝗹𝘂𝗿 𝗜𝗺𝗮𝗴𝗲"
         },
-        category: "𝗜𝗠𝗔𝗚𝗘",
+        category: "image",
         guide: {
             en: "{pn} [ImgReply/imgLink]"
         }
