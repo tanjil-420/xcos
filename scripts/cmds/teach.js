@@ -14,7 +14,7 @@ module.exports = {
 		longDescription: {
 			en: "teach sammy"
 		},
-		category: "teach",
+		category: "box chat",
 		guide:{
 			en: "{p}teach your ask | my answer "
 		}
