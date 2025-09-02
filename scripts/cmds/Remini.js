@@ -14,7 +14,7 @@ module.exports = {
     role: 2,
     shortDescription: "remini",
     longDescription: "enhance the image quality",
-    category: "tool",
+    category: "image",
     guide: {
       en: "{p}remini (reply to image)",
     }
