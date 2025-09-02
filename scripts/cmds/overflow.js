@@ -9,7 +9,7 @@ module.exports = {
     role: 2,
     shortDescription: "Watch overflow 🌚",
     longDescription: "List all episodes and play selected one",
-    category: "hentai",
+    category: "video",
     guide: "{pn} => Show all episodes and select and watch "
   },
 
