@@ -6,7 +6,7 @@ module.exports = {
 		version: '1.0',
 		author: 'Hexa',
 		role: 0,
-		category: 'Ai-Chat',
+		category: 'Ai',
 		shortDescription: {
 			en: `bes-ai`
 		},
