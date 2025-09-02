@@ -4,7 +4,7 @@ module.exports = {
     version: 2.3,
     author: "〲 T A N J I L ツ",
     longDescription: "Info about bot and owner",
-    category: "Special",
+    category: "owner",
     guide: {
       en: "{p}{n}",
     },
