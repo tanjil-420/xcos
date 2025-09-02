@@ -1,46 +1,69 @@
+const apiUrl = "https://r24qks-3001.csb.app";
+
 module.exports = {
   config: {
     name: "edit",
-    aliases: [],
+    aliases: ["e", "aiedit"],
+    version: "1.6.9",
+    author: "Nazrul",
     role: 0,
-    author: "T A N J I L",
-    countDown: 5,
-    longDescription: "",
-    category: "image",
-    guide: {
-      en: "/edit make this image black white"
-    }
+    description: "Edit image by URL or reply",
+    category: "ai",
+    usePrefix: true,
+    isPremium: false,
+    countDown: 7,
+    guide: { en: "{pn} [url] [prompt] or reply to image & prompt" }
   },
-  onStart: async function ({ message, api, args, event }) {
-    if (!event.messageReply || !event.messageReply.attachments || !event.messageReply.attachments[0]) {
-      return message.reply("📸| Please reply to an image to edit it.");
+
+  onStart: async ({ message, event, args }) => {
+    const axios = require("axios");
+    let imgUrl, prompt = "";
+
+    if (event.messageReply?.attachments?.[0]?.type === "photo") {
+      imgUrl = event.messageReply.attachments[0].url;
+      prompt = args.join(" ");
     }
 
-    if (!args[0]) {
-      return message.reply("📝| Please provide a prompt.");
+    if (!imgUrl && args[0]) {
+      imgUrl = args[0];
+      prompt = args.slice(1).join(" ");
     }
 
-    const prompt = encodeURIComponent(args.join(" "));
-    const imgurl = encodeURIComponent(event.messageReply.attachments[0].url);
-    const geditUrl = `https://smfahim.xyz/gedit?prompt=${prompt}&url=${imgurl}`;
+    if (!imgUrl) {
+      return message.reply("• Reply to an image or provide image URL!\n• Add Prompt (for edit)");
+    }
 
-    api.setMessageReaction("⏳", event.messageID, () => {}, true);
+    message.reaction('⏳', event.messageID);
+    const wm = await message.reply("⏳ Editing your image... Please wait!");
 
-    message.reply("🔄| Editing image, please wait...", async (err, info) => {
-      try {
-        const attachment = await global.utils.getStreamFromURL(geditUrl);
-        message.reply({ 
-          body: `✅| Here is your edited image!`, 
-          attachment: attachment 
+    try {
+      const res = await axios.get(
+        `${apiUrl}/nazrul/edit?imgUrl=${encodeURIComponent(imgUrl)}&prompt=${encodeURIComponent(prompt)}&key=Nazrul4x`,
+        { responseType: "stream" }
+      );
+
+      const contentType = res.headers['content-type'];
+      message.reaction('✅', event.messageID);
+      await message.unsend(wm.messageID);
+
+      if (contentType.includes("image")) {
+        return message.reply({
+          body: `✅ Here's your Edited image!`,
+          attachment: res.data
         });
+      } else {
+        let text = "";
+        res.data.setEncoding("utf8");
+        for await (const chunk of res.data) text += chunk;
 
-        let ui = info.messageID;          
-        message.unsend(ui);
-        api.setMessageReaction("✅", event.messageID, () => {}, true);
-      } catch (error) {
-        message.reply("❌| There was an error editing your image.");
-        console.error(error);
+        const json = JSON.parse(text);
+        return message.reply(json?.result?.text || "• No text found in result.");
       }
-    });
+
+    } catch (error) {
+      message.reaction('❌', event.messageID);
+      await message.unsend(wm.messageID);
+      return message.reply(`❌ Error: ${error.message}`);
+    }
   }
 };
