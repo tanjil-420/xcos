@@ -14,7 +14,7 @@ module.exports = {
 		longDescription: {
 			en: "Talk with best para mo nading kaibigan to magaling sa chismis"
 		},
-		category: "Talk",
+		category: "ai",
 		guide: {
 			en: "use{p}besh <text>"
 		}
