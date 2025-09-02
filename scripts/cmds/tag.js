@@ -2,7 +2,7 @@ module.exports = {
   config: {
     name: "tag",
     alises:[],
-    category: '𝗧𝗔𝗚',
+    category: 'box chat',
     role: 0,
     author: 'dipto',
     countDown: 3,
