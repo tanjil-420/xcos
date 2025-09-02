@@ -16,7 +16,7 @@ module.exports = {
     longDescription: {
       en: "Reply to a video or audio to detect the song name and details"
     },
-    category: "tools",
+    category: "image",
     guide: {
       en: "Reply to an audio or video and use -whatsong"
     }
