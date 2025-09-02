@@ -19,7 +19,7 @@ module.exports = {
 🧾 bank service - Show all bank services (বাংলায়)
 📊 bank details - Show your banking details`
     },
-    category: "💰 Economy",
+    category: "game",
     countDown: 1,
     role: 0,
     author: "〲T A N J I L ツ"
