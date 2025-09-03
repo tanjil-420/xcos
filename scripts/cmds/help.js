@@ -113,7 +113,7 @@ module.exports = {
         arrayInfo.sort((a, b) => a.category.localeCompare(b.category));
 
         msg = arrayInfo.map(data => `| ${data.category.toUpperCase()} |\n| ❃ \n| ❃ ${data.names.sort().join(" ❃ ")}\n`).join("\n");
-        msg += `⚒ Bot has: ${commands.size} Commands\n🛸 Prefix: ${prefix}\n👑 Owner: ♡ TANJIL ♡`;
+        msg += `\n\n⚒ Bot has: ${commands.size} Commands\n🛸 Prefix: ${prefix}\n👑 Owner: ♡ TANJIL ♡`;
 
         return message.reply(msg);
       }
