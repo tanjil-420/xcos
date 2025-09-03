@@ -8,7 +8,7 @@ module.exports.config = {
   role: 0,
   author: "xrotick🥀",
   description: "Generate AI image using FluxUltra",
-  category: "img-gen",
+  category: "image",
   guide: "{pn} [prompt]\nExample: {pn} a cute dog with sunglasses",
   countDown: 15,
 };
