@@ -17,7 +17,7 @@ module.exports = {
       vi: "",
       en: "add any user to bot owner group chat"
     },
-    category: "GroupMsg",
+    category: "media",
     guide: {
       en: "{pn} uchiha"
     }
