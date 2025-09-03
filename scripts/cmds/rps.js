@@ -11,7 +11,7 @@ module.exports = {
     longDescription: {
       en: "Challenge the bot in an exciting Rock Paper Scissors game and win virtual money!",
     },
-    category: "games",
+    category: "game",
     guide: {
       en: "{pn} [rock/paper/scissors]",
     }
