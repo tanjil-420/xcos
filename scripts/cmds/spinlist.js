@@ -13,7 +13,7 @@ module.exports = {
     longDescription: {
       en: "Displays a beautiful leaderboard of all users with their current coin balances.",
     },
-    category: "games",
+    category: "game",
     guide: {
       en: "{pn} - View all users and their balances"
     }
