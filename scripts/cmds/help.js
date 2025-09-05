@@ -39,13 +39,13 @@ module.exports = {
       help: "",
       help2: "",
       commandNotFound: `Command "%1" does not exist`,
-      getInfoCommand: `֎─────────────────֍
-         🪶 %1 FILE INFO...\n\n✍️ Author: %8\n📦 Version: %5\n🎭 Role: %6\n🌊 Aliases: %3\n⏱ Countdown: %7s\n📝 Description: %2\n👑 Other names in your\ngroup: %4\n🛠 USAGE: %9\n\n֎─────────────────֍`,
-      onlyInfo: `֎─────────────────֍
-                  🪶 INFO\n\n🌊 Command name: %1\n📝 Description: %2\n📓 Aliases: %3\n👑 Other names in your group: %4\n📦 Version: %5\n🎭 Role: %6\n⏳ Countdown: %7s\n🪶 Author: %8\n\n֎─────────────────֍`,
-      onlyUsage: `֎─────────────────֍\n\n🛠 Usage: %1\n\n֎─────────────────֍`,
-      onlyAlias: `֎─────────────────֍\n\n🪶 Aliases: %1\nOther names in your group: %2\n\n֎─────────────────֍`,
-      onlyRole: `֎─────────────────֍\n\n🌊 Role: %1\n\n֎─────────────────֍`,
+      getInfoCommand: `֎                                              ֍
+         🪶 %1 FILE INFO...\n\n✍️ Author: %8\n📦 Version: %5\n🎭 Role: %6\n🌊 Aliases: %3\n⏱ Countdown: %7s\n📂 Category: %10\n📝 Description: %2\n👑 Other names in your group: %4\n🛠 USAGE: %9\n\n֎                                              ֍`,
+      onlyInfo: `֎                                              ֍
+                  🪶 INFO\n\n🌊 Command name: %1\n📝 Description: %2\n📓 Aliases: %3\n👑 Other names in your group: %4\n📦 Version: %5\n🎭 Role: %6\n⏳ Countdown: %7s\n🪶 Author:%8\n\n֎                                              ֍`,
+      onlyUsage: `֎                                              ֍\n\n🛠 Usage: %1\n\n֎                                              ֍`,
+      onlyAlias: `֎                                              ֍\n\n🪶 Aliases: %1\nOther names in your group: %2\n\n֎                                              ֍`,
+      onlyRole: `֎                                              ֍\n\n🌊 Role: %1\n\n֎                                              ֍`,
       doNotHave: "Do not have",
       roleText0: "0 (All users)",
       roleText1: "1 (Group administrators)",
@@ -169,7 +169,19 @@ module.exports = {
     else if (args[1]?.match(/^-r|role$/))
       formSendMessage.body = getLang("onlyRole", roleText);
     else if (args[1]?.match(/^-i|info$/))
-      formSendMessage.body = getLang("onlyInfo", configCommand.name, description, aliasesString, aliasesThisGroup, configCommand.version, roleText, configCommand.countDown || 1, author || "");
+      formSendMessage.body = getLang(
+  "getInfoCommand",
+  configCommand.name,
+  description,
+  aliasesString,
+  aliasesThisGroup,
+  configCommand.version,
+  roleText,
+  configCommand.countDown || 1,
+  author || "",
+  `${guideBody.split("\n").join("\n»")}`,
+  configCommand.category || "No category"
+);
     else {
       formSendMessage.body = getLang("getInfoCommand", configCommand.name, description, aliasesString, aliasesThisGroup, configCommand.version, roleText, configCommand.countDown || 1, author || "", `${guideBody.split("\n").join("\n»")}`);
       sendWithAttachment = true;
@@ -218,4 +230,4 @@ function cropContent(content, max) {
     content = content.slice(0, max - 3) + "...";
   }
   return content;
-}
+          }
