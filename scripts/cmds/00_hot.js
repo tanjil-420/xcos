@@ -22,7 +22,7 @@ function writeHotData(data) {
 
 module.exports = {
 	config: {
-		name: 'hot',
+		name: 'hot2',
 		version: '1.0',
 		author: 'Kshitiz',
 		role: 0,
