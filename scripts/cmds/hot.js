@@ -22,7 +22,7 @@ module.exports = {
   },
 
   onStart: async function ({ message, event, api }) {
-    const apiUrl = "https://hot-api-2jas.onrender.com/video";
+    const apiUrl = "https://hot-api-yu0b.onrender.com/video";
 
     try {
       // waiting react
