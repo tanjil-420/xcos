@@ -9,7 +9,7 @@ let sentVideos = [];
 module.exports = {
 	config: {
 		name: "kda3",
-		aliases: ["kanda3.0"],
+		aliases: ["kanda3"],
 		version: "3.0",
 		author: "kshitiz",
 		countDown: 30,
