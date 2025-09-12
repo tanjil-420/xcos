@@ -1,14 +1,14 @@
 module.exports = {
   config: {
     name: "kda",
-    aliases: ["kanda2.0"],
+    aliases: ["kanda"],
     version: "2.0",
     author: "kshitiz",
     countDown: 1,
     role: 2,
     shortDescription: "",
     longDescription: "get kanda/p***n video hilake sojaa",
-    category: "𝟭𝟴+",
+    category: "18+",
     guide: "{p}{n}",
   },
 
