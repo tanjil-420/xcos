@@ -1,5 +1,4 @@
 const fs = require("fs-extra");
-const os = require("os");
 
 module.exports = {
   config: {
@@ -14,54 +13,32 @@ module.exports = {
     },
   },
 
-  onStart: async function ({ api, event }) {
-    const { threadID, senderID } = event;
-
-    const uptimeSeconds = process.uptime();
-    const uptime = formatUptime(uptimeSeconds);
-    const system = os.platform();
-    const cpu = os.cpus()[0].model;
-    const updateMonth = "August 2025";
-
-    const message = `
-⎯ [(🌷) OWNER INFO (🌷)] ⎯
+  onStart: async function ({ message }) {
+    const msg = `⎯   🌷 OWNER INFO 🌷 ⎯
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
 Name   : TanJil Hasan 🎀
-UID    : ${senderID}
-U.n.   : tanjilhasan420
+UID    : 61579509758592
+U.n.   : picchi143
 Age    : 𝟷𝟿+
 House  : Dhaka
 Status : Single
 
-⎯⎯ [ 🤖 BOT INFO 🤖 ] ⎯⎯
+⎯⎯ [ 🤖 BOT INFO 🤖 ]⎯⎯
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
-Name   : Hi Na Ta 
-UID    : 61579021162546
+Name   : 🪶 Cʜᴏᴄᴏʟᴀᴛᴇ ➝ 🌷🩶💋
+UID    : 123456789
 U.n.   : 𝙴𝚁𝚁𝙾𝚁
-Age    : 1+
+Age    : 2+
 House  : Indonesia
 Status : A.I. System
-Uptime : ${uptime}
-Update : ${updateMonth}
-System : ${system}
-CRU    : ${cpu}
 
 ⎯⎯⎯⎯ [ 🔧 BOT ] ⎯⎯⎯⎯
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+👑 Author : 
+🎀 𝚃 𝙰 𝙽 𝙹 𝙸 𝙻 🎀`;
 
-👑 Author : 🎀 𝚃 𝙰 𝙽 𝙹 𝙸 𝙻 🎀
-    `;
-
-    api.sendMessage(message, threadID);
+    return message.reply(msg);
   },
 };
-
-function formatUptime(seconds) {
-  const d = Math.floor(seconds / (3600 * 24));
-  const h = Math.floor((seconds % (3600 * 24)) / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  const s = Math.floor(seconds % 60);
-  return `${d}d ${h}h ${m}m ${s}s`;
-}
