@@ -145,9 +145,6 @@ uid : ${ownerInfo.uid}\n`;
 	return message.reply(owner + (operators ? `\n⎯⎯ [ 🤖 operator 🤖 ] ⎯⎯
 ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
 
-• null ()
-• null ()
-• null ()
 ${operators}
 
 
